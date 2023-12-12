@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body  style="display:flex; justify-content: center;">
+    <div style="text-align: center;">
+      <h2>Welcome to RANDOM GAME</h2>
+      <p>Do you wanna play the game? <button id="maxNum">Let's Play</button></p>
+      <img style="display: none;" src="https://gifdb.com/images/high/cute-cartoon-peach-cat-dance-mmqdbpqu279gtdz0.gif" height='300px'></img>
+    </div>
+    <script>
+      document.querySelector("#maxNum").addEventListener("click", function () {
+        alert(
+          "Instruction: Take two numbers Max and Min. Then Choose a number between them (Max-Min). If your chosen number matched you will be declared as winner."
+        );
+        const minNum = parseInt(prompt("Min Num"));
+        const maxNum = parseInt(prompt("Max Num"));
+        const chosenNum = parseInt(prompt("Choose a Num"));
+        const randomNum = Math.floor(
+          Math.random() * (maxNum - minNum + 1) + minNum
+        );
+        console.log(maxNum, minNum, chosenNum, randomNum);
+        let resultGame = document.querySelector(".game-result").innerText;
+        if (
+          (maxNum || minNum || chosenNum !== null) && (maxNum>minNum) &&
+          typeof (maxNum && minNum && chosenNum) === "number"
+        ) {
+          if (chosenNum === randomNum) {
+            alert("YAY! You win the game");
+            document.querySelector('img').style.display = 'block'
+          } else {
+            alert("OPPS! You lose the game");
+          }
+        } else {
+          alert("Please, put valid numbers (maxNum || minNum || chosenNum)");
+        }
+      });
+    </script>
+  </body>
+</html>
